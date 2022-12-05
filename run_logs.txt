@@ -8,3 +8,8 @@ There are 2 degrees of separation between Kevin Bacon and Coffee
 ['Kevin Bacon', 'The Guardian', 'Coffee']
 Run: 2022-12-05 11:26:20.337766
 
+There are 2 degrees of separation between Pepe Julian Onziema and Pepe the Frog
+
+['Pepe Julian Onziema', 'Time (magazine)', 'Pepe the Frog']
+Run: 2022-12-05 13:14:40.800004
+

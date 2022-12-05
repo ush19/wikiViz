@@ -15,7 +15,7 @@ Please send me an email to: palakurthisusheel@gmail.com
 Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!
 
 ##  Future Considerations
-- Fix direction of network graph to go specifically from A --> node --> node --> B, instead of A --> node --> node <-- B (currently algorithm works in the latter direction)
+- Fix direction of network graph to go specifically from A --> node --> node --> B, instead of A --> node --> node <-- B (currently algorithm works in the latter direction), likely caused by the placement of page search B as the second elemnent in the titles list which causes the algorithm to find all links on that page (in hindsight, not an issue but most likely not the proper way to go about finding separation)
 - Further develop network visualization from degrees of separation
 - Reduce scope of links by removing links which aren't in the direct Wikipedia article
 - Simplify how nodes are combined from searches A and B

@@ -1,7 +1,7 @@
 # wikiViz
 
 ##  Inspiration 
-The inspiration for this project was drawn from @terrence.png on TikTok who receives two Wikipedia search results from commenters and uses context to go from the first Wikipedia search page to the second Wikipedia search page. Combined with my interest in network science, I thought it'd be interesting to build a program to calculate the shortest path between any two provided Wikipedia page searches, if any. 
+The inspiration for this project was drawn from [@terrence.png](https://www.tiktok.com/@terrence.png) on TikTok who receives two Wikipedia search results from commenters and uses context to go from the first Wikipedia search page to the second Wikipedia search page. Combined with my interest in network science, I thought it'd be interesting to build a program to calculate the shortest path between any two provided Wikipedia page searches, if any. 
 
 ##  Goals
 - Calculate the shortest path between two Wikipedia pages, if any. 

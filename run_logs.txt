@@ -1,0 +1,10 @@
+There are 3 degrees of separation between Lionel Messi and War of 1812
+
+['Lionel Messi', '1917 South American Championship', 'Chile', 'War of 1812']
+Run: 2022-12-05 11:25:48.124042
+
+There are 2 degrees of separation between Kevin Bacon and Coffee
+
+['Kevin Bacon', 'The Guardian', 'Coffee']
+Run: 2022-12-05 11:26:20.337766
+

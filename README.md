@@ -20,3 +20,5 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!
 - Reduce scope of links by removing links which aren't in the direct Wikipedia article
 - Simplify how nodes are combined from searches A and B
 - Implement other networkx functions, after review of network science and analysis
+- After code is successfully run, add degrees of separation and which links as well as failure messages to a log. 
+- 

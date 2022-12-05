@@ -1,0 +1,157 @@
+BIG REFERENCE:
+https://www.geeksforgeeks.org/generate-graph-using-dictionary-python/
+
+>>>tracker of sorts<<<
+December 23 2021: latest update to this project
+September 22 2022: first update to project in 2022 after hiatus of 9 months, switched from dynamically searching for text to user entering wikipedia link
+November 24 2022: continued updates; made rough map, switched to Gephi (will use networkx later)
+November 25 2022: discovered that the computational part behind the visualizations I'm building are called graph theory... kinda forgot about that
+'''
+
+'''
+thoughts as I go along
+
+> use some network graph package to visualize connection(s)
+> main two pages: page_a, page_b
+> lol no
+    intermediary links between a and b: 
+   a_1_1: list of links 1 page, 1st link from page a
+   a_10_20: list of links 10 pages, 20th link from page a
+   b_300_35: list of links 300 pages, 35th link from page b
+    --> recursively checking if any of the links match 
+    don't make dynammically named variables, use a dict: 
+https://stackoverflow.com/questions/14819849/create-lists-of-unique-names-in-a-for-loop-in-python
+> two main requirements for networkx: nodes and edges
+    dictionary of lists, example:
+        {[source, destination], [source, destination], [source, destination], [source, destination]}
+    recursively loop through the origin node list and find all the pages for each origin, insert into list insert into dictionary - using origin page as source
+    take the origins nodes pages as source 
+    
+    before inserting: 
+    check for duplicates in origin and destination node ends and in intermediaries
+    check for shared edges
+    (or insert first and then delete?)
+    
+    nodes: 
+        develop two lists (origin, destination: 
+        combine both lists and remove duplictes
+    
+    edges: 
+        provided from above 
+        
+    research what type of data structure should be used for the source, destination edge file
+    
+
+maybe?
+> by building a web app, I'd be constantly making requests to Wikipedia and despite their generous no limit, just be considerate policy, i'd rather not crash their systems
+   better undertaking: get ALL wikipedia data, store it in one file, build app from there 
+
+
+
+error = ""
+
+try:
+    nx.shortest_path(G, page_a.title, page_b.title)
+except nx.NetworkXNoPath:
+    error = "No direct path found between %s and %s" % (page_a.title, page_b.title)
+else:
+    shortest_path_list = nx.shortest_path(G, page_a.title, page_b.title)
+    
+if error == "":
+    print("There are " + str(len(shortest_path_list) - 1) + " degrees of separation between " + page_a.title + " and " + page_b.title + "\n")
+    print(shortest_path_list)
+else:
+    print(error)
+    
+    
+
+
+#ORIGINAL QUERY
+title = [i for i in combined_a_b if i is not None]
+
+for i in title:
+    try:
+        page = wiki_wiki.page(i)
+        return_links(page, page_list)
+        
+        #maybe not necessary to TRY these statements...
+        
+        #clean_links(page_list)
+
+        #for p in page_list: 
+        #    if p not in title:
+        #        title.append(p)
+        #    else: 
+        #        pass; 
+            
+        #graph[(page.title)] = page_list
+
+        #G = nx.to_networkx_graph(graph)
+    except RuntimeError:
+        raise;
+    else:
+        page = wiki_wiki.page(i)
+        return_links(page, page_list)
+        clean_links(page_list)
+        
+        for p in page_list: 
+            if p not in title:
+                title.append(p)                
+                
+        graph[(page.title)] = page_list
+
+        G = nx.to_networkx_graph(graph)
+    finally:
+        try:
+            nx.shortest_path(G, page_a.title, page_b.title)
+        except nx.NetworkXNoPath:
+            error = "No path found between %s and %s" % (page_a.title, page_b.title)
+        else:
+            shortest_path_list = nx.shortest_path(G, page_a.title, page_b.title)
+        finally:
+            if error == "":
+                print("There are " + str(len(shortest_path_list) - 1) + " degrees of separation between " + page_a.title + " and " + page_b.title + "\n")
+                print(shortest_path_list)
+                break;
+            else:
+                print(i)
+    
+    page_list.clear();
+    del page; 
+    
+    
+    
+
+>>>SAMPLE TEST CASES<<<
+for p in [2, 3, 4, 5, 6, 7, 8]: 
+    if p not in [2]:
+        print(p)
+    else:
+        pass;
+print(2+45)
+
+>>>SAMPLE TEST CASES<<<
+run = True; 
+while run:
+    for p in [2, 3, 4, 5, 6, 7, 8]: 
+        if p in [2, 9, 3, 10, 5, 7]:
+            print(p)
+        else:
+            run = False
+            pass;
+    print(2+2)
+
+>>>SAMPLE TEST CASES<<<
+test = {}
+list_in_test = [2, 3, 4, 5]
+test['this'] = list_in_test
+copied_list = copy.deepcopy(test)
+#test
+#copied_list
+copied_list.clear()
+#test
+copied_list
+list_in_test.clear()
+test
+copied_list = copy.deepcopy(test)
+print(copied_list)

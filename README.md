@@ -8,13 +8,15 @@ The inspiration for this project was drawn from [@terrence.png](https://www.tikt
 - Return degrees of separation between Wikipedia pages if such a path exists.
 - 
 
-##  Future Considerations
-- Fix direction of network graph to go specifically from A --> node --> node --> B, instead of A --> node --> node <-- B (currently algorithm works in the latter direction)
-- Further develop network visualization from degrees of separation
-- 
-
 ##  Questions?
 Please send me an email to: palakurthisusheel@gmail.com
 
 ##  Connect with me!
 Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!
+
+##  Future Considerations
+- Fix direction of network graph to go specifically from A --> node --> node --> B, instead of A --> node --> node <-- B (currently algorithm works in the latter direction)
+- Further develop network visualization from degrees of separation
+- Reduce scope of links by removing links which aren't in the direct Wikipedia article
+- Simplify how nodes are combined from searches A and B
+- 

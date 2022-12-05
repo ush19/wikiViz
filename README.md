@@ -1,11 +1,11 @@
 # wikiViz
 
 ##  Inspiration 
-The inspiration for this project was drawn from [@terrence.png](https://www.tiktok.com/@terrence.png) on TikTok who receives two Wikipedia search results from commenters and uses context to go from the first Wikipedia search page to the second Wikipedia search page. Combined with my interest in network science, I thought it'd be interesting to build a program to calculate the shortest path between any two provided Wikipedia page searches, if any. 
+The inspiration for this project was drawn from [@terrence.png](https://www.tiktok.com/@terrence.png) on TikTok who maps two Wikipedia pages to each other with only the page's content and context. Combined with my interest in network science, I thought it'd be interesting to build a program to build the connections from nodes (Wikipedia pages) and the links which would lead from Wikipedia page A to Wikipedia page B. 
 
 ##  Goals
 - Calculate the shortest path between two Wikipedia pages, if any. 
-- Calculate degrees of separation between Wikipedia pages, if any. 
+- Return degrees of separation between Wikipedia pages if such a path exists.
 - 
 
 ##  Future Considerations

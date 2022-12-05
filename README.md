@@ -14,7 +14,7 @@ The inspiration for this project was drawn from @terrence.png on TikTok who rece
 - 
 
 ##  Questions?
-[palakurthisusheel@gmail.com](palakurthisusheel@gmail.com)
+[palakurthisusheel@gmail.com](mailto:palakurthisusheel@gmail.com)
 
 ##  Connect with me!
 Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!

@@ -155,3 +155,24 @@ list_in_test.clear()
 test
 copied_list = copy.deepcopy(test)
 print(copied_list)
+
+
+
+
+
+>>> FOR TROUBLESHOOTING AND VALIDATION PURPOSES <<<
+#graph
+
+#df = pd.DataFrame(
+#    [(k, i) for k, v in graph.items() for i in v], 
+#    columns=['key_id', 'ids']
+#)
+#df
+#print((title))
+#print(len(page_list))
+#print(df["key_id"].unique().tolist())
+
+#G2 = nx.to_networkx_graph(graph)
+#nx.shortest_path(G2, page_a.title, page_b.title)
+
+#df.to_excel("test9.xlsx", index = False)

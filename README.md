@@ -14,11 +14,12 @@ Please send me an email to: palakurthisusheel@gmail.com
 ##  Connect with me!
 Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!
 
-##  Future Considerations
+##  Future implementations
 - Fix direction of network graph to go specifically from A --> node --> node --> B, instead of A --> node --> node <-- B (currently algorithm works in the latter direction), likely caused by the placement of page search B as the second elemnent in the titles list which causes the algorithm to find all links on that page (in hindsight, not an issue but most likely not the proper way to go about finding separation)
 - Further develop network visualization from degrees of separation
 - Reduce scope of links by removing links which aren't in the direct Wikipedia article
 - Simplify how nodes are combined from searches A and B
 - Implement other networkx functions, after review of network science and analysis
 - After code is successfully run, add degrees of separation and which links as well as failure messages to a log [implemented, 5dec2022]
-- 
+- Implement front end for this Python application (Streamlit? Shiny?)
+- Replicate project in R, with WikipediR and igraph and implement front end for R application (Shiny?)

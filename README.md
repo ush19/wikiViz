@@ -23,3 +23,4 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!
 - After code is successfully run, add degrees of separation and which links as well as failure messages to a log [implemented, 5dec2022]
 - Implement front end for this Python application (Streamlit? Shiny?)
 - Replicate project in R, with WikipediR and igraph and implement front end for R application (Shiny?)
+- Keep current implementation of getting Wikipedia links and calculating shortest path (but comment them out) and develop the logic and functionality from scratch (yes, basically reinvent the wheel)

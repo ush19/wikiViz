@@ -13,3 +13,8 @@ There are 2 degrees of separation between Pepe Julian Onziema and Pepe the Frog
 ['Pepe Julian Onziema', 'Time (magazine)', 'Pepe the Frog']
 Run: 2022-12-05 13:14:40.800004
 
+There are 2 degrees of separation between World War III and FIFA World Cup
+
+['World War III', 'Amsterdam', 'FIFA World Cup']
+Run: 2022-12-05 19:15:27.814720
+

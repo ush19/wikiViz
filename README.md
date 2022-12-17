@@ -23,8 +23,12 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!
 - Reduce scope of links by removing links which aren't in the direct Wikipedia article
 - Simplify how nodes are combined from searches A and B
 - Implement other networkx functions, after review of network science and analysis
-- After code is successfully run, add degrees of separation and which links [implemented, 5dec2022]
+- After code is successfully run, add degrees of separation and which links 
+      [implemented, 5dec2022]
 - Add failure messages to a log 
-- Implement front end for this Python application (Streamlit? Shiny?)
+- Front end for this Python application (Streamlit? Shiny?)
+      [implemented, 17dec2022]
+- After making UI for the Python Streamlit app, adding to logs isn't working -- TODO: FIX
+- Beautify front end for Python Streamlit app
 - Replicate project in R, with WikipediR and igraph and implement front end for R application (Shiny?)
 - Keep current implementation of getting Wikipedia links and calculating shortest path (but comment them out) and develop the logic and functionality from scratch (yes, basically reinvent the wheel)

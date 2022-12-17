@@ -18,8 +18,6 @@ import streamlit as st
 
 st.title('What connects two Wikipedia pages?')
 
-global output
-
 with st.form(key = 'my_form_to_submit'):
     #taking the more straightforward route, user supplies program with 2 wikipedia links themselves
     #search_node_a = input("enter first wikipedia page name: ")
@@ -127,7 +125,7 @@ if submit_button:
     #print(output)
     st.write(output) 
     
-log = open("app_run_logs.txt", "a")
-log.write(output + "\n")
-log.write("Run: " + str(now) + "\n\n")
-log.close()  
+    log = open("app_run_logs.txt", "a")
+    log.write(output + "\n")
+    log.write("Run: " + str(now) + "\n\n")
+    log.close()  

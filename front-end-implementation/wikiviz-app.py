@@ -16,7 +16,7 @@ import copy
 from datetime import datetime
 import streamlit as st
 
-st.title('Degrees of Separation between 2 Wikipedia pages')
+st.title('Degrees of Separation: Wikipedia Edition')
 
 st.write('Give me any two Wikipedia pages and I''ll tell you how many and what Wiki pages connect those two pages')
 

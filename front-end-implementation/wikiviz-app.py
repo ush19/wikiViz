@@ -125,7 +125,7 @@ if submit_button:
     #print(output)
     st.write(output) 
    
-    log = open("app_run_logs.txt", "a")
-    log.write(output + "\n")
-    log.write("Run: " + str(now) + "\n\n")
-    log.close()
+log = open("app_run_logs.txt", "a")
+log.write(output + "\n")
+log.write("Run: " + str(now) + "\n\n")
+log.close()

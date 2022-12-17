@@ -18,6 +18,8 @@ import streamlit as st
 
 st.title('Degrees of Separation between 2 Wikipedia pages')
 
+st.write('Give me any two Wikipedia pages and I''ll tell you how many and what Wiki pages connect those two pages')
+
 with st.form(key = 'my_form_to_submit'):
     #taking the more straightforward route, user supplies program with 2 wikipedia links themselves
     #search_node_a = input("enter first wikipedia page name: ")

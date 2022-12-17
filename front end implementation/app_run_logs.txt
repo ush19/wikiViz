@@ -1,0 +1,45 @@
+There are 2 degrees of separation between Apple and Pokémon
+
+['Apple', 'United States', 'Pokémon']
+Run: 2022-12-17 02:02:39.426374
+
+There are 1 degrees of separation between Yu-Gi-Oh! and Naruto
+
+['Yu-Gi-Oh!', 'Naruto']
+Run: 2022-12-17 02:20:16.006387
+
+There are 1 degrees of separation between K and O
+
+['K', 'O']
+Run: 2022-12-17 02:32:27.256742
+
+There are 2 degrees of separation between Apple and O
+
+['Apple', 'Latin language', 'O']
+Run: 2022-12-17 02:32:38.093230
+
+There are 2 degrees of separation between Apple and Pokémon
+
+['Apple', 'United States', 'Pokémon']
+Run: 2022-12-17 02:32:44.580036
+
+There are 2 degrees of separation between Lionel Messi and Pokémon
+
+['Lionel Messi', 'Time (magazine)', 'Pokémon']
+Run: 2022-12-17 02:32:51.199305
+
+There are 3 degrees of separation between Lionel Messi and War of 1812
+
+['Lionel Messi', '1917 South American Championship', 'Chile', 'War of 1812']
+Run: 2022-12-17 02:32:58.940486
+
+There are 2 degrees of separation between Apple and Pokémon
+
+['Apple', 'United States', 'Pokémon']
+Run: 2022-12-17 02:38:06.261292
+
+There are 2 degrees of separation between Lionel Messi and Kevin Bacon
+
+['Lionel Messi', 'Internet meme', 'Kevin Bacon']
+Run: 2022-12-17 02:38:16.962079
+

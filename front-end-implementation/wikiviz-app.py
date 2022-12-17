@@ -117,15 +117,17 @@ if submit_button:
         if error != "":
             break;
     
+    global output
+    
     if error == "":
         output = ("There are " + str(len(shortest_path_list) - 1) + " degrees of separation between " + page_a.title + " and " + page_b.title + "\n\n" + str(shortest_path_list))
     else:
-        output = error
-        
-    log = open("app_run_logs.txt", "a")
-    log.write(output + "\n")
-    log.write("Run: " + str(now) + "\n\n")
-    log.close()    
+        output = error  
         
     #print(output)
     st.write(output) 
+    
+log = open("app_run_logs.txt", "a")
+log.write(output + "\n")
+log.write("Run: " + str(now) + "\n\n")
+log.close()  

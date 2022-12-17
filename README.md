@@ -1,6 +1,6 @@
 # wikiViz
 
-Check out the [web app](https://ush19-wikiviz-front-end-implementationwikiviz-app-jvy70i.streamlit.app/)
+Check out the [web app](https://ush19-wikiviz-front-end-implementationwikiviz-app-jvy70i.streamlit.app/)!
 
 
 ##  Inspiration 

@@ -24,10 +24,10 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!
 - Simplify how nodes are combined from searches A and B
 - Implement other networkx functions, after review of network science and analysis
 - After code is successfully run, add degrees of separation and which links 
-      [implemented, 5dec2022]
+      **[implemented, 5dec2022]**
 - Add failure messages to a log 
 - Front end for this Python application (Streamlit? Shiny?)
-      [implemented, 17dec2022]
+      **[implemented, 17dec2022]**
 - After making UI for the Python Streamlit app, adding to logs isn't working -- TODO: FIX
 - Beautify front end for Python Streamlit app
 - Make sure errors don't appear in times of too many API requests on Streamlit app

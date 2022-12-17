@@ -18,3 +18,8 @@ There are 2 degrees of separation between World War III and FIFA World Cup
 ['World War III', 'Amsterdam', 'FIFA World Cup']
 Run: 2022-12-05 19:15:27.814720
 
+There are 2 degrees of separation between Apple and Pokémon
+
+['Apple', 'United States', 'Pokémon']
+Run: 2022-12-17 01:49:09.092717
+

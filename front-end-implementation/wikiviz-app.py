@@ -16,7 +16,7 @@ import copy
 from datetime import datetime
 import streamlit as st
 
-st.title('What connects two Wikipedia pages?")
+st.title('What connects two Wikipedia pages?')
 
 with st.form(key = 'my_form_to_submit'):
     #taking the more straightforward route, user supplies program with 2 wikipedia links themselves

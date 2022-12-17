@@ -26,8 +26,8 @@ with st.form(key = 'my_form_to_submit'):
     #search_node_b = input("enter second wikipedia page name: ")
     
     #modified above string inputs for streamlit app
-    search_node_a = st.text_input("enter first wikipedia page name: ", "")
-    search_node_b = st.text_input("enter second wikipedia page name: ", "")
+    search_node_a = st.text_input("Enter first Wikipedia page name: ", "")
+    search_node_b = st.text_input("Enter second Wikipedia page name: ", "")
 
     submit_button = st.form_submit_button(label = 'Submit')
 

@@ -12,7 +12,7 @@ Inspiration for this project was drawn from [@terrence.png](https://www.tiktok.c
 - 
 
 ##  Questions?
-Please send me an email to: palakurthisusheel@gmail.com
+Email me at palakurthisusheel@gmail.com
 
 ##  Connect with me!
 Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!
@@ -30,5 +30,7 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!
       [implemented, 17dec2022]
 - After making UI for the Python Streamlit app, adding to logs isn't working -- TODO: FIX
 - Beautify front end for Python Streamlit app
+- Make sure errors don't appear in times of too many API requests on Streamlit app
+- Control number of users on Streamlit app 
 - Replicate project in R, with WikipediR and igraph and implement front end for R application (Shiny?)
 - Keep current implementation of getting Wikipedia links and calculating shortest path (but comment them out) and develop the logic and functionality from scratch (yes, basically reinvent the wheel)

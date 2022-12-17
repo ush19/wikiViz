@@ -122,10 +122,10 @@ if submit_button:
     else:
         output = error
         
+    log = open("app_run_logs.txt", "a")
+    log.write(output + "\n")
+    log.write("Run: " + str(now) + "\n\n")
+    log.close()    
+        
     #print(output)
     st.write(output) 
-   
-log = open("app_run_logs.txt", "a")
-log.write(output + "\n")
-log.write("Run: " + str(now) + "\n\n")
-log.close()

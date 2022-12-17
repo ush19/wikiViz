@@ -43,3 +43,8 @@ There are 2 degrees of separation between Lionel Messi and Kevin Bacon
 ['Lionel Messi', 'Internet meme', 'Kevin Bacon']
 Run: 2022-12-17 02:38:16.962079
 
+There are 2 degrees of separation between Apple and Pokémon
+
+['Apple', 'United States', 'Pokémon']
+Run: 2022-12-17 13:57:09.885294
+

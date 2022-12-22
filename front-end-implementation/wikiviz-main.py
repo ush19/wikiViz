@@ -13,7 +13,6 @@ import wikipediaapi
 import networkx as nx
 import copy
 from datetime import datetime
-import streamlit as st
 
 
 #taking the more straightforward route, user supplies program with 2 wikipedia links themselves

@@ -33,3 +33,16 @@ There are 2 degrees of separation between Apple and Pokémon
 ['Apple', 'United States', 'Pokémon']
 Run: 2022-12-17 13:53:52.453985
 
+No path found between Miramar High School and Aland War
+Run: 2022-12-22 02:40:46.788834
+
+There are 3 degrees of separation between Miramar High School and Åland War
+
+['Miramar High School', 'Black people', 'American Revolutionary War', 'Åland War']
+Run: 2022-12-22 02:43:34.074606
+
+There are 3 degrees of separation between Lionel Messi and War of 1812
+
+['Lionel Messi', '1917 South American Championship', 'Chile', 'War of 1812']
+Run: 2022-12-22 03:05:55.684825
+

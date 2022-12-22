@@ -46,3 +46,8 @@ There are 3 degrees of separation between Lionel Messi and War of 1812
 ['Lionel Messi', '1917 South American Championship', 'Chile', 'War of 1812']
 Run: 2022-12-22 03:05:55.684825
 
+There are 3 degrees of separation between Miramar High School and Åland War
+
+['Miramar High School', 'Black people', 'American Revolutionary War', 'Åland War']
+Run: 2022-12-22 12:26:13.399047
+

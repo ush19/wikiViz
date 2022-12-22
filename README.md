@@ -33,4 +33,5 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!
 - Make sure errors don't appear in times of too many API requests on Streamlit app
 - Control number of users on Streamlit app 
 - Replicate project in R, with WikipediR and igraph and implement front end for R application (Shiny?)
-- Reinvent the wheel by developing new logic and functionality for getting Wikipedia links (API - no, possibly BeautifulSoup - yes) and calculating shortest path
+- Reinvent the wheel by developing new logic and functionality for getting Wikipedia links (API - no. possibly BeautifulSoup - yes) and calculating shortest path -- TODO: use wikimedia API instead of BeautifulSoup or Scrapy. 
+- Post project on Apps-gallery.toolforge.org (WikiMedia's app gallery)

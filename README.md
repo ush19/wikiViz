@@ -18,7 +18,7 @@ Email me at palakurthisusheel@gmail.com
 Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!
 
 ##  Future implementations
-[] Fix direction of network graph to go specifically from A --> node --> node --> B, instead of A --> node --> node <-- B (currently algorithm works in the latter direction), likely caused by the placement of page search B as the second elemnent in the titles list which causes the algorithm to find all links on that page (in hindsight, not an issue but most likely not the proper way to go about finding separation)
+- Fix direction of network graph to go specifically from A --> node --> node --> B, instead of A --> node --> node <-- B (currently algorithm works in the latter direction), likely caused by the placement of page search B as the second elemnent in the titles list which causes the algorithm to find all links on that page (in hindsight, not an issue but most likely not the proper way to go about finding separation)
 - Develop network visualization (c'mon Susheel, hence the name wikiVIZ) from degrees of separation
 - Reduce scope of links by removing links which aren't in the direct Wikipedia article
 - Simplify how nodes are combined from searches A and B
@@ -35,3 +35,4 @@ Connect with me on [LinkedIn](https://www.linkedin.com/in/psusheel/)!
 - Replicate project in R, with WikipediR and igraph and implement front end for R application (Shiny?)
 - Reinvent the wheel by developing new logic and functionality for getting Wikipedia links (API - no. possibly BeautifulSoup - yes) and calculating shortest path -- TODO: use wikimedia API instead of BeautifulSoup or Scrapy. 
 - Post project on Apps-gallery.toolforge.org (WikiMedia's app gallery)
+- import Wikipedia? 

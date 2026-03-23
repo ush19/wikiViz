@@ -29,7 +29,9 @@ wikiViz/
 ├── LICENSE                         # MIT
 ├── README.md                       # Updated
 ├── CLAUDE.md                       # Updated
-└── .gitignore                      # Python-standard ignores
+├── docs/                           # Design specs and documentation
+│   └── superpowers/specs/
+└── .gitignore                      # Python + macOS ignores
 ```
 
 ## Component Design
@@ -40,23 +42,24 @@ Extracted from `front-end-implementation/wikiviz-app.py`. Contains all algorithm
 
 **Functions:**
 
-- `return_links(page, list_n)` — extract and sort all links from a Wikipedia page. Takes a `wikipediaapi.WikipediaPage` and a list to append to. Returns the updated list.
-- `clean_links(list_node)` — filter out non-article Wikipedia links (disambiguation, categories, templates, portal pages, etc.). Returns cleaned list.
-- `find_shortest_path(page_a_name, page_b_name)` — orchestrates the full algorithm:
-  1. Fetch both pages via Wikipedia-API
+- `get_links(page)` — extract and sort all links from a `wikipediaapi.WikipediaPage`. Returns a new sorted list of link titles (refactored from the original `return_links` which mutated a list in-place).
+- `clean_links(links)` — filter out non-article Wikipedia links (disambiguation, categories, templates, portal pages, etc.). Returns a new cleaned list.
+- `find_shortest_path(page_a_name, page_b_name, wiki=None)` — orchestrates the full algorithm. Accepts an optional `wikipediaapi.Wikipedia` instance for dependency injection (defaults to creating one with user-agent `"wikiviz/0.1.0"`).
+  1. Validate both pages exist via `page.exists()`; raise `ValueError` if either does not
   2. Extract and clean links from both
-  3. Build initial graph dict `{title: [links]}`
+  3. Build initial graph dict `{title: [links]}` (uses `copy.deepcopy` to avoid mutation issues)
   4. Iteratively expand graph by fetching links from discovered pages
   5. After each expansion, convert to NetworkX graph and check `nx.shortest_path()`
-  6. Return the path as a list of page titles, or raise/return appropriate error if no path found
+  6. Return the path as a list of page titles on success
+  7. Raise `ValueError` if no path is found after exhausting iterations
 
 ### wikiviz/app.py
 
 Streamlit UI code. Imports from `wikiviz.core`. Handles:
 - Form input (two Wikipedia page names)
-- Calls `find_shortest_path()`
+- Calls `find_shortest_path()`, catches `ValueError` to display error messages
 - Displays results
-- Logs to file
+- Logs to file (using `with` statements for file handling)
 
 ### main.py
 
@@ -85,6 +88,8 @@ Run with: `streamlit run main.py`
 | `test result files/` | `_archive/test result files/` | Move |
 | `run_logs.txt` | `_archive/run_logs.txt` | Move |
 | `.spyproject/` | `_archive/.spyproject/` | Move |
+| `.ipynb_checkpoints/` | Remove from tracking | Add to `.gitignore` |
+| `.DS_Store` | Remove from tracking | Add to `.gitignore` |
 
 ## Packaging
 
@@ -93,7 +98,7 @@ Run with: `streamlit run main.py`
 ```toml
 [build-system]
 requires = ["setuptools>=68.0"]
-build-backend = "setuptools.backends._legacy:_Backend"
+build-backend = "setuptools.build_meta"
 
 [project]
 name = "wikiviz"
@@ -102,7 +107,7 @@ description = "Wikipedia degrees of separation calculator"
 requires-python = ">=3.9"
 license = "MIT"
 dependencies = [
-    "Wikipedia-API>=0.5.4",
+    "Wikipedia-API>=0.6.0",
     "networkx>=2.5",
     "streamlit>=1.16.0",
 ]
@@ -125,11 +130,13 @@ All tests in `tests/test_core.py` using pytest. Mock the Wikipedia API at the ne
 
 1. **`test_clean_links`** — pass a list with real article titles mixed with Wikipedia metadata links (disambiguation, categories, templates). Assert only article titles survive.
 
-2. **`test_return_links`** — mock `wikipediaapi.WikipediaPage` to return known links. Assert correct extraction and sorting.
+2. **`test_get_links`** — mock `wikipediaapi.WikipediaPage` to return known links. Assert correct extraction and sorting.
 
-3. **`test_find_shortest_path`** — build a small NetworkX graph by hand (A->B->C->D), call `find_shortest_path` with mocked Wikipedia API that returns these connections. Assert path is `["A", "B", "C", "D"]`.
+3. **`test_find_shortest_path`** — mock `wikipediaapi.Wikipedia` via dependency injection. Mock pages return controlled link sets forming A->B->C->D. Assert path is `["A", "B", "C", "D"]`.
 
-4. **`test_find_shortest_path_no_connection`** — mock two disconnected subgraphs. Assert appropriate error/result when no path exists.
+4. **`test_find_shortest_path_no_connection`** — mock two disconnected subgraphs. Assert `ValueError` is raised.
+
+5. **`test_find_shortest_path_invalid_page`** — mock a page where `exists()` returns `False`. Assert `ValueError` is raised.
 
 ### Running Tests
 

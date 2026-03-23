@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 wikiViz is a Wikipedia degrees-of-separation calculator. It finds the shortest path between two Wikipedia pages by iteratively fetching page links, building a NetworkX directed graph, and running `shortest_path()`.
 
+Live app: https://wikiviz.streamlit.app/
+
 ## Development Setup
 
 ```bash

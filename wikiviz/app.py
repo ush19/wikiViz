@@ -6,8 +6,12 @@ import streamlit as st
 
 from wikiviz.core import find_shortest_path
 
-
 st.set_page_config(page_title="wikiViz", page_icon=None, layout="centered")
+
+
+def _wiki_url(title):
+    """Convert a Wikipedia page title to a full URL."""
+    return f"https://en.wikipedia.org/wiki/{title.replace(' ', '_')}"
 
 
 def main():
@@ -44,13 +48,16 @@ def main():
             degrees = len(path) - 1
             output = (
                 f"There are {degrees} degrees of separation between "
-                f"{path[0]} and {path[-1]}\n\n{path}"
+                f"{path[0]} and {path[-1]}"
             )
+            st.write(output)
+            st.write("**Path:** " + " → ".join(path))
+            for title in path:
+                st.markdown(f"- [{title}]({_wiki_url(title)})")
         except ValueError as e:
             status.empty()
             output = str(e)
-
-        st.write(output)
+            st.write(output)
 
         with open("app_run_logs.txt", "a") as log:
             log.write(f"{output}\n")

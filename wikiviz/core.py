@@ -29,7 +29,7 @@ def clean_links(links):
     ]
 
 
-def find_shortest_path(page_a_name, page_b_name, wiki=None):
+def find_shortest_path(page_a_name, page_b_name, wiki=None, on_progress=None):
     """
     Find the shortest path between two Wikipedia pages.
 
@@ -37,6 +37,7 @@ def find_shortest_path(page_a_name, page_b_name, wiki=None):
         page_a_name: Title of the first Wikipedia page.
         page_b_name: Title of the second Wikipedia page.
         wiki: Optional wikipediaapi.Wikipedia instance (for testing).
+        on_progress: Optional callback(pages_explored, current_title) for UI updates.
 
     Returns:
         List of page titles forming the shortest path.
@@ -65,7 +66,10 @@ def find_shortest_path(page_a_name, page_b_name, wiki=None):
 
     titles = links_a + links_b
 
-    for t in titles:
+    for i, t in enumerate(titles):
+        if on_progress:
+            on_progress(i + 1, t)
+
         page = wiki.page(t)
         page_links = clean_links(get_links(page))
 

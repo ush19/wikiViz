@@ -7,6 +7,9 @@ import streamlit as st
 from wikiviz.core import find_shortest_path
 
 
+st.set_page_config(page_title="wikiViz", page_icon=None, layout="centered")
+
+
 def main():
     st.title("Degrees of Separation: Wikipedia Edition")
 
@@ -27,15 +30,24 @@ def main():
 
     if submit_button:
         now = datetime.now()
+        status = st.empty()
+
+        def on_progress(count, title):
+            status.text(f"Exploring page {count}: {title}...")
 
         try:
-            path = find_shortest_path(search_node_a, search_node_b)
+            with st.spinner("Searching for a path..."):
+                path = find_shortest_path(
+                    search_node_a, search_node_b, on_progress=on_progress
+                )
+            status.empty()
             degrees = len(path) - 1
             output = (
                 f"There are {degrees} degrees of separation between "
                 f"{path[0]} and {path[-1]}\n\n{path}"
             )
         except ValueError as e:
+            status.empty()
             output = str(e)
 
         st.write(output)

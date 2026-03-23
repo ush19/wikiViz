@@ -159,7 +159,9 @@ def find_shortest_path(page_a_name, page_b_name, wiki=None, on_progress=None,
         session: Optional requests.Session for connection reuse.
 
     Returns:
-        List of page titles forming the shortest path.
+        Tuple of (path, graph) where path is a list of page titles forming
+        the shortest path, and graph is a dict {title: [links]} of all
+        explored pages.
 
     Raises:
         ValueError: If either page does not exist or no path is found.
@@ -202,7 +204,8 @@ def find_shortest_path(page_a_name, page_b_name, wiki=None, on_progress=None,
 
         try:
             G = nx.to_networkx_graph(graph)
-            return nx.shortest_path(G, page_a_name, page_b_name)
+            path = nx.shortest_path(G, page_a_name, page_b_name)
+            return path, graph
         except nx.NetworkXNoPath:
             continue
 
@@ -249,7 +252,8 @@ def _find_shortest_path_legacy(page_a_name, page_b_name, wiki, on_progress=None)
 
         try:
             G = nx.to_networkx_graph(graph)
-            return nx.shortest_path(G, page_a.title, page_b.title)
+            path = nx.shortest_path(G, page_a.title, page_b.title)
+            return path, graph
         except nx.NetworkXNoPath:
             continue
 

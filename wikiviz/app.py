@@ -3,15 +3,79 @@
 from datetime import datetime
 
 import streamlit as st
+from streamlit_agraph import agraph, Node, Edge, Config
 
 from wikiviz.core import find_shortest_path
 
-st.set_page_config(page_title="wikiViz", page_icon=None, layout="centered")
+st.set_page_config(page_title="wikiViz", page_icon=None, layout="wide")
 
 
 def _wiki_url(title):
     """Convert a Wikipedia page title to a full URL."""
     return f"https://en.wikipedia.org/wiki/{title.replace(' ', '_')}"
+
+
+def _render_graph(path, graph):
+    """Render the explored graph with the shortest path highlighted."""
+    path_set = set(path)
+    path_edges = set(zip(path, path[1:]))
+
+    # Build nodes — only include nodes that appear in the graph keys
+    # (i.e., pages we actually explored)
+    nodes = []
+    seen_nodes = set()
+    for title in graph:
+        if title in seen_nodes:
+            continue
+        seen_nodes.add(title)
+        if title in path_set:
+            nodes.append(Node(
+                id=title,
+                label=title,
+                size=30,
+                color="#1f77b4",
+                font={"color": "#ffffff", "size": 14},
+            ))
+        else:
+            nodes.append(Node(
+                id=title,
+                label=title,
+                size=15,
+                color="#cccccc",
+                font={"color": "#666666", "size": 10},
+            ))
+
+    # Build edges — only between nodes we have in the graph
+    edges = []
+    for source, targets in graph.items():
+        for target in targets:
+            if target in seen_nodes:
+                if (source, target) in path_edges:
+                    edges.append(Edge(
+                        source=source,
+                        target=target,
+                        color="#1f77b4",
+                        width=3,
+                    ))
+                else:
+                    edges.append(Edge(
+                        source=source,
+                        target=target,
+                        color="#e0e0e0",
+                        width=1,
+                    ))
+
+    config = Config(
+        width=900,
+        height=600,
+        directed=True,
+        physics=True,
+        hierarchical=False,
+        nodeHighlightBehavior=True,
+        highlightColor="#ff4b4b",
+    )
+
+    agraph(nodes=nodes, edges=edges, config=config)
 
 
 def main():
@@ -41,7 +105,7 @@ def main():
 
         try:
             with st.spinner("Searching for a path..."):
-                path = find_shortest_path(
+                path, graph = find_shortest_path(
                     search_node_a, search_node_b, on_progress=on_progress
                 )
             status.empty()
@@ -54,6 +118,10 @@ def main():
             st.write("**Path:** " + " → ".join(path))
             for title in path:
                 st.markdown(f"- [{title}]({_wiki_url(title)})")
+
+            st.subheader("Network Graph")
+            _render_graph(path, graph)
+
         except ValueError as e:
             status.empty()
             output = str(e)

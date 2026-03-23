@@ -207,11 +207,14 @@ def test_find_shortest_path_direct():
         "D": [],
     })
 
-    path = find_shortest_path("A", "B", wiki=wiki)
+    path, graph = find_shortest_path("A", "B", wiki=wiki)
 
     assert path[0] == "A"
     assert path[-1] == "B"
     assert len(path) == 2
+    assert isinstance(graph, dict)
+    assert "A" in graph
+    assert "B" in graph
 
 
 def test_find_shortest_path_no_connection():

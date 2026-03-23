@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wikiviz"
+version = "0.1.0"
+description = "Wikipedia degrees of separation calculator"
+requires-python = ">=3.9"
+license = "MIT"
+dependencies = [
+    "Wikipedia-API>=0.6.0",
+    "networkx>=2.5",
+    "streamlit>=1.16.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7.0"]

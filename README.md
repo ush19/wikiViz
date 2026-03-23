@@ -2,6 +2,8 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+Check out the [web app](https://wikiviz.streamlit.app/)!
+
 Wikipedia degrees of separation calculator — finds the shortest path between any two Wikipedia pages.
 
 ## Inspiration

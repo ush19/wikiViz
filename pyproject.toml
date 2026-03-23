@@ -9,9 +9,10 @@ description = "Wikipedia degrees of separation calculator"
 requires-python = ">=3.9"
 license = "MIT"
 dependencies = [
-    "Wikipedia-API>=0.6.0",
+    "requests>=2.28.0",
     "networkx>=2.5",
     "streamlit>=1.16.0",
+    "streamlit-agraph>=0.0.45",
 ]
 
 [tool.setuptools.packages.find]

@@ -143,13 +143,30 @@ def get_links(page):
     return sorted(page.links.keys())
 
 
+def _get_links_cached(title, session=None, cache_conn=None):
+    """Fetch content links, using DuckDB cache if available."""
+    if cache_conn is not None:
+        from wikiviz.cache import get_cached_links, set_cached_links
+        cached = get_cached_links(cache_conn, title)
+        if cached is not None:
+            return cached
+
+    links = clean_links(get_content_links(title, session=session))
+
+    if cache_conn is not None:
+        set_cached_links(cache_conn, title, links)
+
+    return links
+
+
 def find_shortest_path(page_a_name, page_b_name, wiki=None, on_progress=None,
-                       session=None):
+                       session=None, cache_conn=None):
     """
     Find the shortest path between two Wikipedia pages.
 
     Uses MediaWiki API with section-aware link fetching to skip
     non-content sections (References, Bibliography, See also, etc.).
+    Optionally caches results in DuckDB for faster repeated searches.
 
     Args:
         page_a_name: Title of the first Wikipedia page.
@@ -157,6 +174,7 @@ def find_shortest_path(page_a_name, page_b_name, wiki=None, on_progress=None,
         wiki: Optional wikipediaapi.Wikipedia instance (for testing with mocks).
         on_progress: Optional callback(pages_explored, current_title) for UI updates.
         session: Optional requests.Session for connection reuse.
+        cache_conn: Optional DuckDB connection for link caching.
 
     Returns:
         Tuple of (path, graph) where path is a list of page titles forming
@@ -177,8 +195,8 @@ def find_shortest_path(page_a_name, page_b_name, wiki=None, on_progress=None,
     if not page_exists(page_b_name, session=s):
         raise ValueError(f"Page not found: {page_b_name}")
 
-    links_a = clean_links(get_content_links(page_a_name, session=s))
-    links_b = clean_links(get_content_links(page_b_name, session=s))
+    links_a = _get_links_cached(page_a_name, session=s, cache_conn=cache_conn)
+    links_b = _get_links_cached(page_b_name, session=s, cache_conn=cache_conn)
 
     graph = {
         page_a_name: links_a,
@@ -191,7 +209,7 @@ def find_shortest_path(page_a_name, page_b_name, wiki=None, on_progress=None,
         if on_progress:
             on_progress(i + 1, t)
 
-        page_links = clean_links(get_content_links(t, session=s))
+        page_links = _get_links_cached(t, session=s, cache_conn=cache_conn)
 
         graph[t] = copy.deepcopy(page_links)
 

@@ -10,3 +10,6 @@ build/
 *.swp
 .env
 .venv/
+*.duckdb
+*.duckdb.wal
+app_run_logs.txt

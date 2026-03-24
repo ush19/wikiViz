@@ -13,6 +13,7 @@ dependencies = [
     "networkx>=2.5",
     "streamlit>=1.16.0",
     "streamlit-agraph>=0.0.45",
+    "duckdb>=0.9.0",
 ]
 
 [tool.setuptools.packages.find]

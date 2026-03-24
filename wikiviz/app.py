@@ -5,9 +5,16 @@ from datetime import datetime
 import streamlit as st
 from streamlit_agraph import agraph, Node, Edge, Config
 
+from wikiviz.cache import get_connection, get_cache_stats
 from wikiviz.core import find_shortest_path
 
 st.set_page_config(page_title="wikiViz", page_icon=None, layout="wide")
+
+
+@st.cache_resource
+def _get_cache_conn():
+    """Get a shared DuckDB connection, cached across Streamlit reruns."""
+    return get_connection()
 
 
 def _wiki_url(title):
@@ -81,6 +88,11 @@ def _render_graph(path, graph):
 def main():
     st.title("Degrees of Separation: Wikipedia Edition")
 
+    # Sidebar: cache stats
+    cache_conn = _get_cache_conn()
+    stats = get_cache_stats(cache_conn)
+    st.sidebar.metric("Cached Pages", stats["total_pages"])
+
     st.write(
         "Give me any two Wikipedia pages and I'll tell you how many "
         "and what Wiki pages connect those two pages"
@@ -103,10 +115,14 @@ def main():
         def on_progress(count, title):
             status.text(f"Exploring page {count}: {title}...")
 
+        cache_conn = _get_cache_conn()
+
         try:
             with st.spinner("Searching for a path..."):
                 path, graph = find_shortest_path(
-                    search_node_a, search_node_b, on_progress=on_progress
+                    search_node_a, search_node_b,
+                    on_progress=on_progress,
+                    cache_conn=cache_conn,
                 )
             status.empty()
             degrees = len(path) - 1
